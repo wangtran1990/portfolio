@@ -1,51 +1,35 @@
 # Dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+node_modules
 
-# Testing
-/coverage
-
-# Next.js build output
-/.next/
-/out/
+# SvelteKit build output
+/.svelte-kit
 /build
+/output
+
+# Vercel / Netlify / Wrangler
+.vercel
+.netlify
+.wrangler
+
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# OS generated files
+.DS_Store
+Thumbs.db
 
 # Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-
-# Environment variables
-.env*
-!.env.example
-
-# Vercel
-.vercel
-
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# BEGIN oh-my-opencode-slim worktrees
-.slim/worktrees/
-.slim/worktrees.json
-# END oh-my-opencode-slim worktrees
 
 # IDEs and editors
 .idea/
@@ -57,3 +41,8 @@ Thumbs.db
 
 # Sensitive files
 *.pem
+
+# BEGIN oh-my-opencode-slim worktrees
+.slim/worktrees/
+.slim/worktrees.json
+# END oh-my-opencode-slim worktrees
