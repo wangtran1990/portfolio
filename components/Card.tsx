@@ -9,13 +9,15 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function Card({
   children,
   className = '',
-  interactive = true,
+  interactive = false,
   ...props
 }: CardProps) {
   return (
     <div
-      className={`bg-surface-card border border-border-card rounded-xl p-6 ${
-        interactive ? 'hover:border-border-hover transition-colors duration-200' : ''
+      className={`bg-surface-card border border-border-card rounded-2xl p-6 sm:p-7 transition-all duration-200 ${
+        interactive
+          ? 'hover:border-sky-400/60 hover:shadow-sm dark:hover:border-sky-500/40'
+          : ''
       } ${className}`}
       {...props}
     >

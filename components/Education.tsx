@@ -5,25 +5,28 @@ import { education } from '@/data/resume'
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 px-6 scroll-mt-20">
-      <div className="max-w-4xl mx-auto">
+    <section id="education" className="py-20 px-6 scroll-mt-20">
+      <div className="max-w-5xl mx-auto">
         <FadeIn>
-          <SectionTitle title="Education" />
+          <SectionTitle
+            title="Education"
+            subtitle="Academic background in computer science and software engineering."
+          />
         </FadeIn>
 
-        <div className="flex flex-col gap-6">
+        <div className="grid sm:grid-cols-2 gap-6">
           {education.map((edu, i) => (
-            <FadeIn key={edu.degree} delay={i * 0.08} direction="left">
-              <Card className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <FadeIn key={edu.degree} delay={i * 0.08}>
+              <Card className="h-full p-6 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-text-main font-semibold text-base sm:text-lg">
+                  <span className="text-xs font-mono text-sky-600 dark:text-sky-400 font-semibold mb-2 block">
+                    {edu.period}
+                  </span>
+                  <h3 className="text-text-main font-semibold text-base mb-1">
                     {edu.degree}
                   </h3>
-                  <p className="text-text-muted text-sm mt-1">{edu.institution}</p>
+                  <p className="text-text-muted text-sm">{edu.institution}</p>
                 </div>
-                <span className="text-cyan-500 text-sm font-mono shrink-0">
-                  {edu.period}
-                </span>
               </Card>
             </FadeIn>
           ))}

@@ -17,6 +17,15 @@ export interface Experience {
   location: string
   bullets: string[]
   stack: string
+  category?: 'fintech' | 'streaming' | 'startup' | 'enterprise'
+  tags?: string[]
+}
+
+export interface Metric {
+  label: string
+  value: string
+  unit: string
+  note: string
 }
 
 export interface SkillGroup {
@@ -27,6 +36,7 @@ export interface SkillGroup {
 export interface Achievement {
   title: string
   description: string
+  tag?: string
 }
 
 export interface Education {
@@ -36,7 +46,7 @@ export interface Education {
 }
 
 export const personal: PersonalInfo = {
-  name: "Trần Đăng Quang ",
+  name: "Trần Đăng Quang",
   title: "Technical Lead",
   tagline:
     "10+ years building cloud-native backends, distributed systems, and payment platforms.",
@@ -48,6 +58,33 @@ export const personal: PersonalInfo = {
 
 export const about: string = `Hands-on Technical Lead with 10+ years of experience building cloud-native backend platforms, distributed systems, and payment solutions using Node.js, Golang, .NET, and AWS. Led cross-functional development teams on technical architecture, code reviews, engineering standards, and delivery while remaining hands-on in software development. Experienced in international engineering environments, leveraging AI-assisted engineering workflows to improve software quality and developer productivity.`
 
+export const metrics: Metric[] = [
+  {
+    label: "Peak Concurrency",
+    value: "400K+",
+    unit: "CCU Handled",
+    note: "High-scale OTT streaming platform at VieON",
+  },
+  {
+    label: "Production Experience",
+    value: "10+",
+    unit: "Years",
+    note: "Cloud-native, distributed backends & team leadership",
+  },
+  {
+    label: "Architecture Built",
+    value: "0 → 1",
+    unit: "Platform",
+    note: "Golang microservices, payment gateways & AWS infrastructure",
+  },
+  {
+    label: "Domain Standards",
+    value: "PCI DSS",
+    unit: "Compliant",
+    note: "Idempotent payment systems, banking integrations & security hardening",
+  },
+]
+
 export const experiences: Experience[] = [
   {
     company: "Global Mind Business",
@@ -55,6 +92,8 @@ export const experiences: Experience[] = [
     role: "Engineering Manager / Technical Lead",
     period: "Oct 2025 – May 2026",
     location: "Ho Chi Minh City, Vietnam",
+    category: "startup",
+    tags: ["Golang", "Microservices", "AWS", "0-to-1", "AI Workflows"],
     bullets: [
       "Designed cloud-native backend architecture, engineering standards, and service communication for a 0-to-1 platform.",
       "Led cross-functional development team (backend, web, and mobile), responsible for technical design, code reviews, mentoring, and implementation of critical backend services.",
@@ -70,6 +109,8 @@ export const experiences: Experience[] = [
     role: "Software Engineering Team Lead",
     period: "Jul 2024 – Sep 2025",
     location: "Ho Chi Minh City, Vietnam",
+    category: "fintech",
+    tags: ["FinTech", "Payment Gateway", "PCI DSS", "Idempotency", "Node.js/Go"],
     bullets: [
       "Led backend delivery for payment gateway and digital wallet platforms, covering architecture, code reviews, releases, and production operations.",
       "Designed banking integrations, callback workflows, idempotency, reconciliation, and transaction processing.",
@@ -85,6 +126,8 @@ export const experiences: Experience[] = [
     roleNote: "Promoted from Backend Supervisor",
     period: "May 2020 – Jun 2024",
     location: "Ho Chi Minh City, Vietnam",
+    category: "streaming",
+    tags: ["OTT Streaming", "400k+ CCU", "Golang", "High Availability", "Billing"],
     bullets: [
       "Led backend engineering for a streaming platform serving 400,000+ concurrent users.",
       "Designed Golang services for payment, billing, reconciliation, promotion, and subscription systems.",
@@ -100,6 +143,8 @@ export const experiences: Experience[] = [
     role: "Software Engineer",
     period: "2012 – 2020",
     location: "Ho Chi Minh City, Vietnam",
+    category: "enterprise",
+    tags: [".NET", "Java", "Enterprise", "Outsourcing"],
     bullets: [
       "Fujinet Systems JSC: Japanese outsourcing environment with structured SDLC, quality standards, and cross-cultural collaboration.",
       "SystemGear Vietnam: Japanese company in Vietnam, applying Japanese software development practices.",
@@ -169,21 +214,25 @@ export const skills: SkillGroup[] = [
 export const achievements: Achievement[] = [
   {
     title: "0-to-1 Golang Microservices Platform",
+    tag: "Architecture 0-to-1",
     description:
       "Designed and implemented a full microservices backend from scratch: authentication, API gateway, service communication, PostgreSQL, Redis, and observability foundations.",
   },
   {
     title: "Led 10+ Member Cross-functional Teams",
+    tag: "Team Leadership",
     description:
       "Led engineering teams of more than 10 members across backend, web, and mobile while remaining involved in architecture, implementation review, mentoring, and production troubleshooting.",
   },
   {
     title: "400,000+ Concurrent Users Streaming Platform",
+    tag: "Scale & Performance",
     description:
       "Supported backend engineering for a high-concurrency OTT streaming platform with publicly reported peaks exceeding 400,000 concurrent users.",
   },
   {
     title: "PCI DSS & Penetration-Test Remediation",
+    tag: "FinTech Security",
     description:
       "Led payment system security remediation for PCI DSS and penetration-test findings, improving API security, transaction reliability, and operational visibility.",
   },

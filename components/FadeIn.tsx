@@ -1,7 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
-import React from 'react'
+import { useEffect, useRef } from 'react'
 
 interface FadeInProps {
   children: React.ReactNode
@@ -16,29 +15,44 @@ export default function FadeIn({
   delay = 0,
   direction = 'up',
 }: FadeInProps) {
-  const shouldReduceMotion = useReducedMotion()
+  const ref = useRef<HTMLDivElement>(null)
 
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>
-  }
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
 
-  const offset = 20
-  const initialOffset = {
-    up: { y: offset, x: 0 },
-    left: { x: -offset, y: 0 },
-    right: { x: offset, y: 0 },
-    none: { x: 0, y: 0 },
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.style.opacity = '1'
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.animationPlayState = 'running'
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '-50px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  const directionClass = {
+    up: 'fade-in-up',
+    left: 'fade-in-left',
+    right: 'fade-in-right',
+    none: 'fade-in-none',
   }[direction]
 
   return (
-    <motion.div
-      initial={{ opacity: 0, ...initialOffset }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.45, delay }}
-      className={className}
+    <div
+      ref={ref}
+      className={`${directionClass} ${className}`}
+      style={{ animationDelay: `${delay}s`, animationPlayState: 'paused' }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

@@ -10,7 +10,7 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: 'dark',
+  theme: 'light',
   toggleTheme: () => {},
 })
 
@@ -30,7 +30,7 @@ function subscribe(callback: () => void) {
 }
 
 function getSnapshot(): Theme {
-  if (typeof window === 'undefined') return 'dark'
+  if (typeof window === 'undefined') return 'light'
   const saved = localStorage.getItem('theme') as Theme | null
   if (saved === 'dark' || saved === 'light') {
     return saved
@@ -39,7 +39,7 @@ function getSnapshot(): Theme {
 }
 
 function getServerSnapshot(): Theme {
-  return 'dark'
+  return 'light'
 }
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
