@@ -42,6 +42,11 @@ next-env.d.ts
 ehthumbs.db
 Thumbs.db
 
+# BEGIN oh-my-opencode-slim worktrees
+.slim/worktrees/
+.slim/worktrees.json
+# END oh-my-opencode-slim worktrees
+
 # IDEs and editors
 .idea/
 .vscode/
